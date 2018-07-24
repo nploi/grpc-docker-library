@@ -12,12 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM debian:stretch
 
-RUN apt-get update && apt-get install -y \
-  build-essential autoconf libtool git pkg-config curl \
-  automake libtool curl make g++ unzip \
-  && apt-get clean
+FROM alpine:latest
+
+
+RUN apk add --update make cmake g++ git
 
 # install protobuf first, then grpc
 ENV GRPC_RELEASE_TAG v1.12.x
